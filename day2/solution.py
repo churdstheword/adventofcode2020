@@ -10,14 +10,17 @@ lines = file.readlines()
 def part_one():
     count = 0
     for line in lines:
+
         # Parse the line into parts using regex
         pattern = re.compile('(\d+)\-(\d+) (\w): (\w+)')
         result = pattern.match(line)
+
         # Determine the number of ocurrences of the letter in the password
         n = 0
         for char in result.group(4):
             if(char == result.group(3)):
                 n += 1
+        
         # Check to see if the frequency of the letter is in bounds
         if( int(result.group(1)) <= n <= int(result.group(2))):
             count += 1
