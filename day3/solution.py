@@ -20,7 +20,7 @@ def translate(vector1, vector2):
 
 # Calculates the number of trees over a projected path. 
 # Assumes a fixed starting postion and a constant velocity vector
-def calculate(lines, velocity):
+def countTreesInPath(lines, velocity):
     position = [0, 0]
     count = 0
     while position[1] < len(lines):      
@@ -35,22 +35,18 @@ def calculate(lines, velocity):
 def part_one(lines):
     velocity = [3,1]
     # Calculate the number of trees for the projected path
-    trees = calculate(lines, velocity)
+    trees = countTreesInPath(lines, velocity)
     print('Solution Part 1: ', trees)
 
 
 def part_two(lines):
     velocities = [[1,1], [3,1], [5,1], [7,1], [1,2]]
-    value = 0
+    value = 1
     # Calculate the number of trees for each projected path and get a total product
     for velocity in velocities:
-        trees = calculate(lines, velocity)
-        if value == 0:
-            value = trees
-        else:
-            value = value * trees
+        trees = countTreesInPath(lines, velocity)
+        value = value * trees
     print('Solution Part 2: ', value)
    
-
 part_one(lines)
 part_two(lines)
