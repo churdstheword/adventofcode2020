@@ -9,13 +9,13 @@ path = os.path.dirname(os.path.abspath(__file__))
 file = open(os.path.join(path, 'input.txt'), "r")
 
 passports = []
-fields = []
 with file as f:
     lines = f.readlines()
+    fields = []
     for i in range(0, len(lines)):
         line = lines[i].rstrip()
-        if(line != ''):
-            pattern = re.compile('\w{3}:[^\s]+')
+        if line != '':
+            pattern = re.compile(r'\w{3}:[^\s]+')
             results = re.findall(pattern, line)
             for result in results:
                 key, value = result.split(':')
